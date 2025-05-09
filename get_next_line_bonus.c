@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaghdal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 14:08:42 by mnaghdal          #+#    #+#             */
-/*   Updated: 2025/04/16 14:16:52 by mnaghdal         ###   ########.fr       */
+/*   Created: 2025/05/09 17:27:04 by mnaghdal          #+#    #+#             */
+/*   Updated: 2025/05/09 17:27:09 by mnaghdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_until_newline(int fd, char *buffer)
 {
@@ -71,26 +71,15 @@ char	*update_left(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[FOPEN_MAX];
 	char		*line;
 
+	if (fd > FOPEN_MAX)
+		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (free(buffer), buffer = NULL);
-	buffer = read_until_newline(fd, buffer);
-	line = extract_line(buffer);
-	buffer = update_left(buffer);
+		return (free(buffer[fd]), buffer[fd] = NULL);
+	buffer[fd] = read_until_newline(fd, buffer[fd]);
+	line = extract_line(buffer[fd]);
+	buffer[fd] = update_left(buffer[fd]);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
-
-// 	// int fd2;
-// 	fd = open("alo.txt", O_RDONLY);
-// 	line = get_next_line(fd);
-// 		printf("%s", line);
-// 		free(line);
-// 		get_next_line(-1);
-//  }

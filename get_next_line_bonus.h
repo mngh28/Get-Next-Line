@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaghdal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 14:18:07 by mnaghdal          #+#    #+#             */
-/*   Updated: 2025/04/16 14:23:35 by mnaghdal         ###   ########.fr       */
+/*   Created: 2025/05/09 17:27:14 by mnaghdal          #+#    #+#             */
+/*   Updated: 2025/05/09 17:27:18 by mnaghdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 300
 # endif
 # include "unistd.h"
 # include "stdlib.h"
+# include <limits.h>
 # include <fcntl.h>//
 # include <stdio.h>//
 
